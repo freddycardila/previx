@@ -14,9 +14,7 @@ function AboutUs() {
             Conoce quiénes somos y cómo transformamos la seguridad laboral en una ventaja competitiva para tu empresa.
           </p>
         </div>
-        <div className="about-hero-image">
-          <img src={heroImg} alt="Sobre nosotros" />
-        </div>
+        
       </div>
 
       {/* CARDS - OCUPAN TODO EL ANCHO */}
