@@ -1,8 +1,8 @@
-import logoAzul from "../images/Fondo_Hero.png"; // ✅ importa la imagen
+
 function Hero() {
   return (
     <section className="hero">
-      <img src={logoAzul} alt="Logo PREVIX" /> {/* ✅ usa la variable */}
+      
       <div className="hero-text">
         <span>Transformamos la</span>
         <h1> prevención</h1>

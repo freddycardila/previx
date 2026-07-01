@@ -12,7 +12,7 @@ function Solutions() {
           <ul>
             <li>
               <strong>Movilidad Empresarial</strong>
-              <p>Desafíos e implementos PESW que salvan vidas en cada trayecto.</p>
+              <p>Desafíos e implementos PESV que salvan vidas en cada trayecto.</p>
               <a href="#">Ver más →</a>
             </li>
           </ul>

@@ -71,27 +71,31 @@ body {
 
 /* --- HERO --- */
 .hero {
+  margin-top: 2px;
   position: relative;
-  text-align: center;
+  text-align: left;
   color: white;
+  background: url("../src/images/Hero-2.png") no-repeat center center;
+  background-size: cover;   /* cubre todo el contenedor */
+  min-height: 700px;        /* altura mínima */
+  display: flex;
+  align-items: center;
+  padding: 60px;
 }
 
-.hero img {
-  width: 100%;
-  height: 600px;
-  object-fit: cover;
-  filter: brightness(55%);
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5); /* capa oscura */
+  z-index: 1;
 }
 
 .hero-text {
-  position: absolute;
-  top: 50%;              /* centra vertical */
-  left: 20%;             /* centra horizontal */
-  transform: translate(-50%, -50%);
-  max-width: 800px;
-  text-align: left;
+  position: relative;
+  z-index: 2;   /* encima de la capa oscura */
+  max-width: 600px;
 }
-
 .hero-text h1 {
   font-size: 3rem;
   font-weight: bold;
@@ -824,4 +828,79 @@ body {
 
   /* corte diagonal */
   clip-path: polygon(18% 0%, 100% 0, 100% 100%, 0 100%);
+}
+/* Estilos para la sección de valores */
+.valores-section {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 2px solid #eee;
+}
+
+/* Contenedor del título - Azul oscuro con bordes redondeados */
+.valores-header {
+  background: #0a1628;
+  padding: 1.5rem 2rem;
+  border-radius: 15px;
+  max-width: 600px;
+  margin: 0 auto 2.5rem auto;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(10, 22, 40, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.valores-header:hover {
+  transform: scale(1.02);
+}
+
+.valores-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.valores-title span {
+  color: #00a3ff;
+}
+
+.valores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.valor-item {
+  background: #00a3ff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  border-left: 4px solid #354249;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.valor-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.valor-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.valor-item h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0a1628;
+  margin-bottom: 0.5rem;
+}
+
+.valor-item p {
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
 }

@@ -1,7 +1,7 @@
 import misionImg from "../images/mision.png";
 import visionImg from "../images/vision.png";
 import valoresImg from "../images/valores.png";
-import heroImg from "../images/hero-about.png"; // Imagen del hero
+import heroImg from "../images/hero-about.png";
 
 function AboutUs() {
   return (
@@ -13,10 +13,9 @@ function AboutUs() {
           <p className="hero-subtitle">
             Conoce quiénes somos y cómo transformamos la seguridad laboral en una ventaja competitiva para tu empresa.
           </p>
-          
         </div>
         <div className="about-hero-image">
-      
+          <img src={heroImg} alt="Sobre nosotros" />
         </div>
       </div>
 
@@ -46,7 +45,7 @@ function AboutUs() {
             </p>
           </div>
 
-          {/* CARD 3: VALORES */}
+          {/* CARD 3: COMPROMISO */}
           <div className="about-card">
             <div className="about-card-image">
               <img src={valoresImg} alt="Valores" />
@@ -56,32 +55,43 @@ function AboutUs() {
               Proteger vidas, fortalecer empresas y construir organizaciones más seguras.
             </p>
           </div>
-          {/* CARD 3: VALORES */}
-          <div className="about-card">
-            <div className="about-card-image">
-              <img src={valoresImg} alt="Valores" />
+        </div>
+
+        {/* SECCIÓN DE VALORES - TÍTULO APARTE Y TARJETAS DEBAJO */}
+        <div className="valores-section">
+          <div className="valores-header">
+            <h3 className="valores-title" >Nuestros <span>valores</span></h3>
+          </div>
+          <div className="valores-grid">
+            <div className="valor-item">
+              <span className="valor-icon">🤝</span>
+              <h4>Cercanía</h4>
+              <p>Relaciones humanas, transparentes y construidas desde la confianza.</p>
             </div>
-            <h2>Nuestros <span>valores</span></h2>
-            <dl>
-              <dt><span>Cercanía: </span></dt>
-<dd>Creemos en relaciones humanas, transparentes y construidas desde la confianza.</dd>
-<dt><span>Evolución: </span></dt>
-<dd>Nos movemos constantemente hacia mejores soluciones, procesos y resultados.</dd>
-<dt><span>Prevención inteligente: </span></dt>
-<dd>No actuamos desde el miedo al riesgo, sino desde la capacidad de anticiparnos y transformar.</dd>
-<dt><span>Compromiso real</span></dt>
-<dd>Asumimos cada proyecto como parte del crecimiento de nuestros clientes.</dd>
-<dt><span>Humanidad: </span></dt>
-<dd>Detrás de cada indicador hay personas, familias y equipos que merecen regresar seguros a casa.</dd>
-
-
-            </dl>
+            <div className="valor-item">
+              <span className="valor-icon">🚀</span>
+              <h4>Evolución</h4>
+              <p>Mejores soluciones, procesos y resultados constantemente.</p>
+            </div>
+            <div className="valor-item">
+              <span className="valor-icon">🧠</span>
+              <h4>Prevención inteligente</h4>
+              <p>Nos anticipamos y transformamos desde la capacidad de prever.</p>
+            </div>
+            <div className="valor-item">
+              <span className="valor-icon">💪</span>
+              <h4>Compromiso real</h4>
+              <p>Cada proyecto es parte del crecimiento de nuestros clientes.</p>
+            </div>
+            <div className="valor-item">
+              <span className="valor-icon">❤️</span>
+              <h4>Humanidad</h4>
+              <p>Detrás de cada indicador hay personas que merecen regresar seguros a casa.</p>
+            </div>
           </div>
         </div>
       </div>
-        
     </section>
-    
   );
 }
 
