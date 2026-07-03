@@ -1,5 +1,5 @@
 import logoAzul from "../images/Logo Azul.png"; 
-import { FaFacebook, FaLinkedin, FaInstagram } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaYoutube, FaTiktok } from "react-icons/fa";
 
 function Footer() {
   return (
@@ -20,7 +20,7 @@ function Footer() {
     <h4>Síguenos</h4>
     <div className="social-icons">
       <a href="#"><FaFacebook /></a>
-      <a href="#"><FaLinkedin /></a>
+      <a href="#"><FaTiktok /></a>
       <a href="#"><FaInstagram /></a>
     </div>
   </div>

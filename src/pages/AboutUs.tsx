@@ -1,3 +1,15 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { 
+  faHandshake, 
+  faRocket, 
+  faBrain, 
+  faShieldHeart, 
+  faHeart,
+  faBullseye,
+  faEye,
+  faFlag
+} from '@fortawesome/free-solid-svg-icons';
+
 import misionImg from "../images/mision.png";
 import visionImg from "../images/vision.png";
 import valoresImg from "../images/valores.png";
@@ -14,7 +26,6 @@ function AboutUs() {
             Conoce quiénes somos y cómo transformamos la seguridad laboral en una ventaja competitiva para tu empresa.
           </p>
         </div>
-        
       </div>
 
       {/* CARDS - OCUPAN TODO EL ANCHO */}
@@ -58,31 +69,41 @@ function AboutUs() {
         {/* SECCIÓN DE VALORES - TÍTULO APARTE Y TARJETAS DEBAJO */}
         <div className="valores-section">
           <div className="valores-header">
-            <h3 className="valores-title" >Nuestros <span>valores</span></h3>
+            <h3 className="valores-title">Nuestros <span>valores</span></h3>
           </div>
           <div className="valores-grid">
             <div className="valor-item">
-              <span className="valor-icon">🤝</span>
+              <div className="valor-icon-wrapper">
+                <FontAwesomeIcon icon={faHandshake} className="valor-icon" />
+              </div>
               <h4>Cercanía</h4>
-              <p>Relaciones humanas, transparentes y construidas desde la confianza.</p>
+              <p style={{ color: '#f0f0f0' }}>Relaciones humanas, transparentes y construidas desde la confianza.</p>
             </div>
             <div className="valor-item">
-              <span className="valor-icon">🚀</span>
+              <div className="valor-icon-wrapper">
+                <FontAwesomeIcon icon={faRocket} className="valor-icon" />
+              </div>
               <h4>Evolución</h4>
               <p>Mejores soluciones, procesos y resultados constantemente.</p>
             </div>
             <div className="valor-item">
-              <span className="valor-icon">🧠</span>
+              <div className="valor-icon-wrapper">
+                <FontAwesomeIcon icon={faBrain} className="valor-icon" />
+              </div>
               <h4>Prevención inteligente</h4>
               <p>Nos anticipamos y transformamos desde la capacidad de prever.</p>
             </div>
             <div className="valor-item">
-              <span className="valor-icon">💪</span>
+              <div className="valor-icon-wrapper">
+                <FontAwesomeIcon icon={faShieldHeart} className="valor-icon" />
+              </div>
               <h4>Compromiso real</h4>
               <p>Cada proyecto es parte del crecimiento de nuestros clientes.</p>
             </div>
             <div className="valor-item">
-              <span className="valor-icon">❤️</span>
+              <div className="valor-icon-wrapper">
+                <FontAwesomeIcon icon={faHeart} className="valor-icon" />
+              </div>
               <h4>Humanidad</h4>
               <p>Detrás de cada indicador hay personas que merecen regresar seguros a casa.</p>
             </div>

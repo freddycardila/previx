@@ -1,15 +1,68 @@
-import simulatorImg from "../images/simulator.png"; 
-import seguridad from "../images/seguridad.png"; 
-import vial from "../images/vial.png"; 
+import React, { useEffect, useRef } from 'react';
+import '../components/Simulator.css';
+import simulatorImg from "../images/simulator.png";
+import seguridad from "../images/seguridad.png";
+import vial from "../images/vial.png";
+import heroBackground from "../images/hero-background.png";
+import consultoriaImg from "../images/consultoria.png"; // O usa una URL de Unsplash
+
 function Simulator() {
+  // Referencias para animación al scroll (ahora con 4 elementos)
+  const containersRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    containersRef.current.forEach((container) => {
+      if (container) observer.observe(container);
+    });
+
+    return () => {
+      containersRef.current.forEach((container) => {
+        if (container) observer.unobserve(container);
+      });
+    };
+  }, []);
+
   return (
     <section className="simulator">
-      <div className="simulator-container">
-        {/* Imagen a la derecha */}
-        <div className="simulator-image">
-          <img src={seguridad} alt="Simulador de conducción PREVIX" />
+      {/* HERO (sin cambios) */}
+      <div
+        className="simulator-hero"
+        style={{
+          backgroundImage: `url(${heroBackground})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <div className="simulator-hero-left">
+          <p className="simulator-hero-subtitle">
+            Tecnología, prevención y formación para construir entornos laborales y viales más seguros.
+          </p>
         </div>
-        {/* Texto a la izquierda */}
+        <div className="simulator-hero-right">
+          <h1>SOLUCIONES EN <span>SEGURIDAD Y MOVILIDAD</span></h1>
+        </div>
+      </div>
+
+      {/* SECCIÓN 1: Seguridad y Salud en el Trabajo */}
+      <div
+        className="simulator-container"
+        ref={(el) => (containersRef.current[0] = el)}
+      >
+        <div className="simulator-image">
+          <img src={seguridad} alt="Seguridad laboral" />
+        </div>
         <div className="simulator-content">
           <h1>SEGURIDAD Y SALUD <span>EN EL TRABAJO</span></h1>
           <p className="simulator-subtitle">
@@ -22,12 +75,14 @@ function Simulator() {
             <li>Inspecciones.</li>
             <li>Auditorías.</li>
           </ul>
-          <a href="#" className="simulator-button">CONOCE MÁS</a>
         </div>
       </div>
-      <div className="simulator-container">
-        
-        {/* Texto a la izquierda */}
+
+      {/* SECCIÓN 2: Simuladores de Conducción */}
+      <div
+        className="simulator-container"
+        ref={(el) => (containersRef.current[1] = el)}
+      >
         <div className="simulator-content">
           <h1>SIMULADORES DE <span>CONDUCCIÓN</span></h1>
           <p className="simulator-subtitle">
@@ -43,21 +98,20 @@ function Simulator() {
           <p className="simulator-subtitle">
             La simulación permite generar conciencia real y fortalecer la toma de decisiones en escenarios de riesgo.
           </p>
-          <a href="#" className="simulator-button">CONOCE MÁS</a>
-
         </div>
-
-        {/* Imagen a la derecha */}
         <div className="simulator-image">
-          <img src={simulatorImg} alt="Simulador de conducción PREVIX" />
+          <img src={simulatorImg} alt="Simulador de conducción" />
         </div>
       </div>
-      <div className="simulator-container">
-        {/* Imagen a la derecha */}
+
+      {/* SECCIÓN 3: Seguridad Vial y Movilidad */}
+      <div
+        className="simulator-container"
+        ref={(el) => (containersRef.current[2] = el)}
+      >
         <div className="simulator-image">
-          <img src={vial} alt="Simulador de conducción PREVIX" />
+          <img src={vial} alt="Seguridad vial" />
         </div>
-        {/* Texto a la izquierda */}
         <div className="simulator-content">
           <h1>SEGURIDAD VIAL<span> Y MOVILIDAD</span></h1>
           <p className="simulator-subtitle">
@@ -76,13 +130,38 @@ function Simulator() {
             <li>Campañas preventivas.</li>
           </ul>
           <p className="simulator-subtitle">
-           Ayudamos a reducir riesgos, fortalecer la cultura vial y optimizar la movilidad empresarial.
+            Ayudamos a reducir riesgos, fortalecer la cultura vial y optimizar la movilidad empresarial.
           </p>
-          <a href="#" className="simulator-button">CONOCE MÁS</a>
+        </div>
+      </div>
+
+      {/* ===== NUEVA SECCIÓN 4: CONSULTORÍA Y AUDITORÍA ===== */}
+      <div
+        className="simulator-container"
+        ref={(el) => (containersRef.current[3] = el)}
+      >
+        <div className="simulator-content">
+          <h1>CONSULTORÍA Y <span>AUDITORÍA</span></h1>
+          <p className="simulator-subtitle">
+            Acompañamiento estratégico especializado.
+          </p>
+          <ul className="simulator-features">
+            <li>Auditorías internas.</li>
+            <li>Diagnóstico organizacional.</li>
+            <li>Consultoría técnica.</li>
+            <li>Mejora continua.</li>
+            <li>Acompañamiento empresarial.</li>
+          </ul>
+          <p className="simulator-subtitle" style={{ fontStyle: 'italic', marginTop: '1rem' }}>
+            “Más que cumplir una norma, ayudamos a construir organizaciones más fuertes y sostenibles.”
+          </p>
+        </div>
+        <div className="simulator-image">
+          <img src={consultoriaImg} alt="Consultoría y Auditoría" />
         </div>
       </div>
     </section>
-    
   );
 }
+
 export default Simulator;

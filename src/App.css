@@ -751,11 +751,13 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 40px;
+  border:20px;
 }
 
 /* Texto */
 .simulator-content {
   flex: 1;
+  
 }
 
 .simulator-content h1 {
@@ -894,13 +896,179 @@ body {
 .valor-item h4 {
   font-size: 1rem;
   font-weight: 700;
-  color: #0a1628;
+  color: #0f184e; /* Cambiado a blanco */
   margin-bottom: 0.5rem;
 }
 
 .valor-item p {
   font-size: 0.85rem;
-  color: #666;
+  color: #ffffff; /* Cambiado a blanco */
   line-height: 1.5;
   margin: 0;
+}
+/* Estilos para los iconos de Font Awesome */
+.valor-icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  margin: 0 auto 1rem auto;
+  transition: all 0.3s ease;
+}
+
+.valor-icon {
+  font-size: 1.8rem;
+  color: #110b31;
+}
+
+.valor-item:hover .valor-icon-wrapper {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.1);
+}
+/* HERO - DOS COLUMNAS */
+.simulator-hero {
+  display: flex;
+  align-items: stretch;
+  min-height: 100vh; /* Ocupa toda la altura de la pantalla */
+  width: 1300px;
+  margin: 0;
+  position: relative;
+  padding: 0 4rem;
+ 
+  /* La imagen de fondo se aplica en el inline style, pero aseguramos que cubra */
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Columna izquierda (subtítulo y botones) - alineados al fondo */
+.simulator-hero-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Baja el contenido al fondo */
+  align-items: flex-start; /* Texto a la izquierda */
+  color: #ffffff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  padding-bottom: 4rem; /* Espacio desde el borde inferior */
+}
+
+/* Columna derecha (título principal) - alineado arriba */
+.simulator-hero-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Sube el contenido al inicio */
+  align-items: flex-end; /* Texto a la derecha */
+  color: #ffffff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  padding-top: 2rem; /* Ajusta este valor para subir más o menos el título */
+}
+
+/* Título - más arriba */
+.simulator-hero-right h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1.2;
+  margin: 0;
+  text-align: right;
+  max-width: 600px;
+}
+
+.simulator-hero-right h1 span {
+  color: #00a3ff;
+}
+
+/* Subtítulo - abajo */
+.simulator-hero-left .simulator-hero-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.95;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  max-width: 500px;
+  text-align: left;
+}
+
+/* Botones - abajo junto al subtítulo */
+.simulator-hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.simulator-hero-button {
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.simulator-hero-button.primary {
+  background: #00a3ff;
+  color: #ffffff;
+}
+
+.simulator-hero-button.primary:hover {
+  background: #0088cc;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 163, 255, 0.3);
+}
+
+.simulator-hero-button.secondary {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5px);
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+.simulator-hero-button.secondary:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-3px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .simulator-hero {
+    flex-direction: column;
+    padding: 0 2rem;
+    min-height: 100vh;
+    gap: 0;
+  }
+
+  .simulator-hero-left {
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 3rem;
+    order: 2; /* Subtítulo abajo */
+  }
+
+  .simulator-hero-right {
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    padding-top: 3rem;
+    order: 1; /* Título arriba */
+  }
+
+  .simulator-hero-right h1 {
+    text-align: center;
+  }
+
+  .simulator-hero-left .simulator-hero-subtitle {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .simulator-hero-buttons {
+    justify-content: center;
+  }
 }

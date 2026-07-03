@@ -1,0 +1,571 @@
+/* ===== IMPORTS ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap');
+
+/* ===== RESET DE ESTILOS PROPIOS ===== */
+.simulator {
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== EFECTO DE PARTÍCULAS (estrellas flotantes) ===== */
+.simulator-hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 40% 70%, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 60% 20%, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 80% 60%, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 10% 80%, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 90% 40%, #ffffff, rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  opacity: 0.3;
+  z-index: 1;
+  pointer-events: none;
+  animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.2; }
+  100% { opacity: 0.6; }
+}
+
+/* ===== HERO - SIN BORDES NI ESPACIOS ===== */
+.simulator-hero {
+  display: flex;
+  align-items: stretch;
+  min-height: 100vh;
+  width: 100vw;
+  max-width: 100%;
+  padding: 0 !important;
+  margin: 0 !important;
+  position: relative;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden; /* Para que las animaciones no sobresalgan */
+}
+
+/* Overlay con efecto de ondulación (light wave) */
+.simulator-hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(10, 22, 40, 0.3) 0%, rgba(10, 22, 40, 0.6) 100%);
+  z-index: 1;
+  animation: waveGlow 8s infinite alternate ease-in-out;
+}
+
+@keyframes waveGlow {
+  0% { transform: scale(1) rotate(0deg); opacity: 0.7; }
+  50% { transform: scale(1.1) rotate(3deg); opacity: 0.9; }
+  100% { transform: scale(1) rotate(-3deg); opacity: 0.7; }
+}
+
+/* Columnas - con padding interno */
+.simulator-hero-left,
+.simulator-hero-right {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0 4rem;
+}
+
+/* Columna izquierda (subtítulo) - con efecto de destello */
+.simulator-hero-left {
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding-bottom: 6rem;
+  color: #ffffff;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  animation: fadeInLeft 1.2s ease forwards;
+}
+
+/* Columna derecha (título) - con efecto de brillo */
+.simulator-hero-right {
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding-top: 4rem;
+  color: #ffffff;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  animation: fadeInRight 1.2s ease forwards;
+}
+
+/* Título principal - con efecto de resplandor */
+.simulator-hero-right h1 {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin: 0;
+  text-align: right;
+  max-width: 700px;
+  letter-spacing: -0.02em;
+  position: relative;
+  display: inline-block;
+}
+
+.simulator-hero-right h1 span {
+  background: linear-gradient(135deg, #00a3ff, #66d0ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+}
+
+/* Efecto de brillo en el título (resplandor animado) */
+.simulator-hero-right h1::after {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(circle, rgba(0, 163, 255, 0.2) 0%, transparent 70%);
+  opacity: 0;
+  z-index: -1;
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Subtítulo - con efecto de borde parpadeante */
+.simulator-hero-left .simulator-hero-subtitle {
+  font-size: 1.3rem;
+  font-weight: 300;
+  line-height: 1.9;
+  margin-bottom: 2.5rem;
+  max-width: 550px;
+  text-align: left;
+  opacity: 0.95;
+  letter-spacing: 0.5px;
+  border-left: 4px solid #00a3ff;
+  padding-left: 1.5rem;
+  position: relative;
+  animation: borderPulse 2s ease-in-out infinite;
+}
+
+@keyframes borderPulse {
+  0%, 100% { border-color: #00a3ff; }
+  50% { border-color: #66d0ff; box-shadow: 0 0 15px rgba(0, 163, 255, 0.3); }
+}
+
+/* Botones con efecto de resplandor */
+.simulator-hero-button {
+  padding: 0.9rem 2.5rem;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  text-decoration: none;
+  display: inline-block;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecto de resplandor en botón primario */
+.simulator-hero-button.primary {
+  background: linear-gradient(135deg, #00a3ff, #0077cc);
+  color: #ffffff;
+  box-shadow: 0 8px 25px rgba(0, 163, 255, 0.4);
+}
+
+.simulator-hero-button.primary::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.simulator-hero-button.primary:hover::before {
+  opacity: 1;
+}
+
+.simulator-hero-button.primary:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 15px 40px rgba(0, 163, 255, 0.6);
+}
+
+.simulator-hero-button.secondary {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.simulator-hero-button.secondary:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-5px) scale(1.03);
+  border-color: #ffffff;
+}
+
+/* ===== CONTENEDORES DE SERVICIOS ===== */
+.simulator-container {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 5rem 4rem;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.4s ease;
+}
+
+/* Efecto de inclinación 3D al hacer hover */
+.simulator-container:hover {
+  transform: perspective(1000px) rotateX(2deg) rotateY(2deg);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+}
+
+.simulator-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Alternancia de fondos con gradientes más vibrantes */
+.simulator-container:nth-child(odd) {
+  background: linear-gradient(135deg, #f8faff 0%, #e8f0fe 100%);
+  border-radius: 40px 0 40px 0;
+  margin: 2rem auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+}
+
+.simulator-container:nth-child(even) {
+  background: #ffffff;
+  border-radius: 0 40px 0 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.03);
+}
+
+/* Imágenes con efecto de zoom y brillo intensificado */
+.simulator-image {
+  flex: 1;
+  overflow: hidden;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  transition: all 0.5s ease;
+}
+
+.simulator-image img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.8s ease, filter 0.6s ease;
+}
+
+.simulator-image:hover img {
+  transform: scale(1.1);
+  filter: brightness(1.1) contrast(1.1) saturate(1.1);
+}
+
+.simulator-image:hover {
+  box-shadow: 0 30px 60px rgba(0, 163, 255, 0.2);
+  transform: scale(1.02);
+}
+
+/* Contenido textual */
+.simulator-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.simulator-content h1 {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  color: #0a1628;
+  margin-bottom: 0.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+/* Efecto de subrayado animado en títulos */
+.simulator-content h1::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #00a3ff, #66d0ff);
+  transition: width 0.6s ease;
+}
+
+.simulator-container:hover .simulator-content h1::after {
+  width: 100%;
+}
+
+.simulator-content h1 span {
+  color: #00a3ff;
+  background: linear-gradient(135deg, #00a3ff, #0077cc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.simulator-subtitle {
+  font-size: 1.05rem;
+  color: #475569;
+  line-height: 1.7;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.simulator-container:hover .simulator-subtitle {
+  color: #0a1628;
+}
+
+.simulator-features {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem 1.5rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.simulator-features li {
+  font-size: 0.95rem;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: all 0.3s ease;
+}
+
+/* Efecto de cambio de color y desplazamiento en los íconos */
+.simulator-features li::before {
+  content: '✦';
+  color: #00a3ff;
+  font-size: 1.2rem;
+  font-weight: 900;
+  transition: all 0.3s ease;
+}
+
+.simulator-features li:nth-child(odd)::before {
+  content: '◆';
+}
+
+.simulator-container:hover .simulator-features li::before {
+  color: #66d0ff;
+  transform: scale(1.2) rotate(20deg);
+}
+
+.simulator-container:hover .simulator-features li {
+  transform: translateX(5px);
+  color: #0a1628;
+}
+
+.simulator-button {
+  display: inline-block;
+  padding: 0.7rem 2rem;
+  background: transparent;
+  color: #00a3ff;
+  border: 2px solid #00a3ff;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  align-self: flex-start;
+  margin-top: 0.5rem;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efecto de relleno animado en botones "CONOCE MÁS" */
+.simulator-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 163, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.simulator-button:hover::before {
+  left: 100%;
+}
+
+.simulator-button:hover {
+  background: #00a3ff;
+  color: #ffffff;
+  box-shadow: 0 8px 25px rgba(0, 163, 255, 0.3);
+  transform: translateY(-3px) scale(1.02);
+}
+
+/* ===== ANIMACIONES ===== */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+  .simulator-hero-left,
+  .simulator-hero-right {
+    padding: 0 3rem;
+  }
+  .simulator-container {
+    padding: 4rem 3rem;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .simulator-container {
+    flex-direction: column;
+    padding: 3rem 2rem;
+    gap: 2rem;
+  }
+  .simulator-container:nth-child(even) .simulator-image {
+    order: -1;
+  }
+  .simulator-image img {
+    height: 280px;
+  }
+  .simulator-features {
+    grid-template-columns: 1fr;
+  }
+  /* Desactivamos el efecto 3D en móvil */
+  .simulator-container:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .simulator-hero {
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 0 !important;
+    background-attachment: scroll;
+  }
+
+  .simulator-hero-left,
+  .simulator-hero-right {
+    padding: 0 2rem;
+  }
+
+  .simulator-hero-left {
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 3rem;
+    order: 2;
+  }
+
+  .simulator-hero-right {
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    padding-top: 3rem;
+    order: 1;
+  }
+
+  .simulator-hero-right h1 {
+    text-align: center;
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+  }
+
+  .simulator-hero-left .simulator-hero-subtitle {
+    text-align: center;
+    max-width: 100%;
+    border-left: none;
+    padding-left: 0;
+    border-top: 4px solid #00a3ff;
+    padding-top: 1.5rem;
+  }
+
+  .simulator-hero-buttons {
+    justify-content: center;
+  }
+
+  .simulator-container {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .simulator-image img {
+    height: 220px;
+  }
+
+  .simulator-content h1 {
+    font-size: 1.8rem;
+  }
+  /* Desactivamos efectos de partículas y ondas en móvil para rendimiento */
+  .simulator-hero::after {
+    display: none;
+  }
+  .simulator-hero::before {
+    animation: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .simulator-hero-left,
+  .simulator-hero-right {
+    padding: 0 1rem;
+  }
+  .simulator-hero-right h1 {
+    font-size: 2rem;
+  }
+  .simulator-hero-left .simulator-hero-subtitle {
+    font-size: 1rem;
+  }
+  .simulator-hero-button {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.85rem;
+  }
+  .simulator-container {
+    padding: 1.5rem 1rem;
+  }
+  .simulator-image img {
+    height: 180px;
+  }
+}
