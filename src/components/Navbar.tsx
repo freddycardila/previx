@@ -1,7 +1,15 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import logoAzul from "../images/Logo Azul.png"; 
 
 function Navbar() {
+   const navigate = useNavigate();
+
+  // ===== FUNCIONES DE NAVEGACIÓN =====
+  
+const goToContact = () => {
+    navigate('/contacto'); // Cambia la ruta según tu configuración
+  };
   return (
     <nav className="navbar">
       <div className="logo">
@@ -15,7 +23,7 @@ function Navbar() {
         <li><a href="#contacto">Contacto</a></li>
       </ul>
       <div className="nav-buttons">
-        <button>COTIZA AHORA</button>
+        <button onClick={goToContact}>COTIZA AHORA</button>
       </div>
     </nav>
   );

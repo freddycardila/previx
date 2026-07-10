@@ -1,13 +1,15 @@
 import React, { useEffect, useRef } from 'react';
-import '../components/Simulator.css';
+import '../css/Simulator.css';
 import simulatorImg from "../images/simulator.png";
 import seguridad from "../images/seguridad.png";
 import vial from "../images/vial.png";
-import heroBackground from "../images/hero-background.png";
-import consultoriaImg from "../images/consultoria.png"; // O usa una URL de Unsplash
+import heroBackground from "../images/hero-background.jpeg";
+import consultoriaImg from "../images/consultoria.png";
+import { useScrollToHash } from '../hooks/useScrollToHash';
 
 function Simulator() {
-  // Referencias para animación al scroll (ahora con 4 elementos)
+  useScrollToHash();
+
   const containersRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
@@ -19,7 +21,7 @@ function Simulator() {
           }
         });
       },
-      { threshold: 0.15, rootMargin: '0px 0px -50px 0px' }
+      { threshold: 0, rootMargin: '0px 0px -50px 0px' }
     );
 
     containersRef.current.forEach((container) => {
@@ -35,7 +37,7 @@ function Simulator() {
 
   return (
     <section className="simulator">
-      {/* HERO (sin cambios) */}
+      {/* HERO */}
       <div
         className="simulator-hero"
         style={{
@@ -55,9 +57,10 @@ function Simulator() {
         </div>
       </div>
 
-      {/* SECCIÓN 1: Seguridad y Salud en el Trabajo */}
+      {/* ===== SECCIÓN 1: Seguridad y Salud en el Trabajo (estilo A) ===== */}
+      <div id="seguridad-laboral"></div>
       <div
-        className="simulator-container"
+        className="simulator-container style-a"
         ref={(el) => (containersRef.current[0] = el)}
       >
         <div className="simulator-image">
@@ -78,9 +81,10 @@ function Simulator() {
         </div>
       </div>
 
-      {/* SECCIÓN 2: Simuladores de Conducción */}
+      {/* SECCIÓN 2: Simuladores de Conducción (estilo B) */}
+      <div id="drive"></div>
       <div
-        className="simulator-container"
+        className="simulator-container style-b"
         ref={(el) => (containersRef.current[1] = el)}
       >
         <div className="simulator-content">
@@ -104,9 +108,9 @@ function Simulator() {
         </div>
       </div>
 
-      {/* SECCIÓN 3: Seguridad Vial y Movilidad */}
+      {/* SECCIÓN 3: Seguridad Vial y Movilidad (estilo A) */}
       <div
-        className="simulator-container"
+        className="simulator-container style-a"
         ref={(el) => (containersRef.current[2] = el)}
       >
         <div className="simulator-image">
@@ -135,9 +139,10 @@ function Simulator() {
         </div>
       </div>
 
-      {/* ===== NUEVA SECCIÓN 4: CONSULTORÍA Y AUDITORÍA ===== */}
+      {/* SECCIÓN 4: CONSULTORÍA Y AUDITORÍA (estilo B) */}
+      <div id="cons"></div>
       <div
-        className="simulator-container"
+        className="simulator-container style-b"
         ref={(el) => (containersRef.current[3] = el)}
       >
         <div className="simulator-content">
@@ -153,7 +158,7 @@ function Simulator() {
             <li>Acompañamiento empresarial.</li>
           </ul>
           <p className="simulator-subtitle" style={{ fontStyle: 'italic', marginTop: '1rem' }}>
-            “Más que cumplir una norma, ayudamos a construir organizaciones más fuertes y sostenibles.”
+            "Más que cumplir una norma, ayudamos a construir organizaciones más fuertes y sostenibles."
           </p>
         </div>
         <div className="simulator-image">

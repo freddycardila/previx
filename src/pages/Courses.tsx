@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import "../components/Courses.css";
+import "../css/Courses.css";
 import heroBg from "../images/courses-hero.png";
+import { useScrollToHash } from "../hooks/useScrollToHash";
 
 // ===== DATOS ESTRUCTURADOS CON DESCRIPCIONES REALES =====
 const coursesData = [
@@ -95,6 +96,8 @@ const servicesData = [
 ];
 
 const SpecialCourses: React.FC = () => {
+  useScrollToHash();
+
   const [selectedItem, setSelectedItem] = useState<{ title: string; description: string } | null>(null);
   const [isClosing, setIsClosing] = useState(false);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -163,7 +166,7 @@ const SpecialCourses: React.FC = () => {
         }}
       >
         <div className="special-hero-overlay"></div>
-        <div className="special-hero-content">
+        <div className="special-hero-content" id="cursos">
           <h1>
             CURSOS Y <span>CAPACITACIONES ESPECIALES</span>
           </h1>
@@ -195,7 +198,7 @@ const SpecialCourses: React.FC = () => {
       </div>
 
       {/* ===== SERVICIOS ESPECIALES ===== */}
-      <div className="special-section">
+      <div className="special-section" id="especiales">
         <h2>Servicios especiales</h2>
         <div className="special-grid">
           {servicesData.map((service, index) => (
@@ -219,12 +222,12 @@ const SpecialCourses: React.FC = () => {
 
       {/* ===== MODAL CON SLIDE DESDE ABAJO ===== */}
       {selectedItem && (
-        <div 
-          className={`modal-overlay ${isClosing ? 'closing' : ''}`} 
+        <div
+          className={`modal-overlay ${isClosing ? "closing" : ""}`}
           onClick={handleCloseModal}
         >
-          <div 
-            className={`modal-content ${isClosing ? 'closing' : ''}`} 
+          <div
+            className={`modal-content ${isClosing ? "closing" : ""}`}
             onClick={(e) => e.stopPropagation()}
           >
             <h3>{selectedItem.title}</h3>

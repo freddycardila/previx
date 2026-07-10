@@ -230,10 +230,12 @@
   align-items: center;
   gap: 4rem;
   max-width: 1300px;
-  margin: 0 auto;
+  margin: 2rem auto;
   padding: 5rem 4rem;
   opacity: 0;
   transform: translateY(60px);
+  background: #eaf6ff; /* azul muy claro para todos los contenedores */
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
   transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.4s ease;
 }
 
@@ -248,18 +250,14 @@
   transform: translateY(0);
 }
 
-/* Alternancia de fondos con gradientes más vibrantes */
-.simulator-container:nth-child(odd) {
-  background: linear-gradient(135deg, #f8faff 0%, #e8f0fe 100%);
+/* Estilo A: Seguridad Laboral y Seguridad Vial */
+.simulator-container.style-a {
   border-radius: 40px 0 40px 0;
-  margin: 2rem auto;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
 }
 
-.simulator-container:nth-child(even) {
-  background: #ffffff;
+/* Estilo B: Simuladores y Consultoría */
+.simulator-container.style-b {
   border-radius: 0 40px 0 40px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.03);
 }
 
 /* Imágenes con efecto de zoom y brillo intensificado */
@@ -465,7 +463,7 @@
     padding: 3rem 2rem;
     gap: 2rem;
   }
-  .simulator-container:nth-child(even) .simulator-image {
+  .simulator-container.style-b .simulator-image {
     order: -1;
   }
   .simulator-image img {
@@ -568,4 +566,17 @@
   .simulator-image img {
     height: 180px;
   }
+}
+
+/* ===== COMPENSACIÓN PARA EL HEADER FIJO ===== */
+#seguridad-laboral {
+  scroll-margin-top: 100px;
+}
+
+#drive {
+  scroll-margin-top: 80px;
+}
+
+#cons {
+  scroll-margin-top: 80px;
 }

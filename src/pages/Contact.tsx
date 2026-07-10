@@ -1,5 +1,5 @@
 import React from 'react';
-import '../components/Contact.css';
+import '../css/Contact.css';
 // Importamos la imagen desde la carpeta images
 import contactoImg from '../images/Contacto.png';
 import { FaFacebook, FaInstagram, FaYoutube, FaTiktok } from "react-icons/fa";
@@ -31,7 +31,7 @@ const Contact: React.FC = () => {
                   <i className="fas fa-phone-alt"></i>
                   <div>
                     <h4>Teléfono</h4>
-                    <p>+57 300 123 4567</p>
+                    <p>+57 3027521827 - +57 317 0478351</p>
                   </div>
                 </div>
                 <div className="contact-item">
@@ -45,14 +45,14 @@ const Contact: React.FC = () => {
                   <i className="fab fa-whatsapp"></i>
                   <div>
                     <h4>WhatsApp</h4>
-                    <p>+57 300 123 4567</p>
+                    <p>+57 3027521827 - +57 317 0478351</p>
                   </div>
                 </div>
 
                 {/* Botón de WhatsApp directo */}
                 <div className="contact-whatsapp">
                   <a
-                    href="https://wa.me/573001234567?text=Hola%20PREVIX%2C%20necesito%20informaci%C3%B3n"
+                    href="https://wa.me/573027521827?text=Hola%20PREVIX%2C%20necesito%20una%20cotizaci%C3%B3n!!"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-whatsapp"

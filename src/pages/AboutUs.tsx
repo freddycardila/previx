@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from 'react';
-import '../components/AboutUs.css';
+   import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // 👈 IMPORTANTE: Importa useNavigate
+import '../css/AboutUs.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faHandshake, 
@@ -7,19 +8,35 @@ import {
   faBrain, 
   faShieldHeart, 
   faHeart,
-  faArrowRight
+  faArrowRight,
+  faStar,
+  faCheck
 } from '@fortawesome/free-solid-svg-icons';
 
 import misionImg from "../images/mision.png";
-import visionImg from "../images/vision.png";
+import visionImg from "../images/vision_2.png";
 import valoresImg from "../images/valores.png";
 import heroImg from "../images/hero-about.png";
 
 function AboutUs() {
+  const navigate = useNavigate(); // 👈 Hook de navegación de React Router
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
   const valuesRef = useRef<(HTMLDivElement | null)[]>([]);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
-  // Animación al hacer scroll
+  // ===== EFECTO DE MOUSE EN EL HERO =====
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 20;
+      const y = (e.clientY / window.innerHeight - 0.5) * 20;
+      setMousePosition({ x, y });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  // ===== ANIMACIÓN AL SCROLL =====
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -50,13 +67,13 @@ function AboutUs() {
     };
   }, []);
 
-  // Efecto parallax en el hero
+  // ===== PARALLAX EN HERO =====
   useEffect(() => {
     const handleScroll = () => {
       const hero = document.querySelector('.about-hero') as HTMLElement;
       if (hero) {
         const scrolled = window.scrollY;
-        hero.style.backgroundPositionY = `${scrolled * 0.5}px`;
+        hero.style.backgroundPositionY = `${scrolled * 0.4}px`;
       }
     };
 
@@ -64,16 +81,22 @@ function AboutUs() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = () => {
-    const section = document.getElementById('valores');
+  // ===== FUNCIONES DE NAVEGACIÓN =====
+  const scrollToQuienesSomos = () => {
+    const section = document.getElementById('quienes-somos');
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
+  const goToServices = () => {
+    // 👇 Navega a la página de servicios con React Router
+    navigate('/servicios'); // Cambia la ruta según tu configuración
+  };
+
   return (
     <section className="about-us">
-      {/* ===== HERO CON PARALLAX ===== */}
+      {/* ===== HERO SIN BURBUJAS ===== */}
       <div 
         className="about-hero"
         style={{
@@ -81,11 +104,16 @@ function AboutUs() {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
+          transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`,
         }}
       >
         <div className="about-hero-overlay"></div>
+
         <div className="about-hero-content">
-          <div className="hero-badge">✦ Sobre nosotros</div>
+          <div className="hero-badge">
+            <FontAwesomeIcon icon={faStar} className="badge-icon" />
+            Sobre nosotros
+          </div>
           <h1>
             <span className="hero-gradient">PREVIX</span>
             <br />
@@ -95,20 +123,23 @@ function AboutUs() {
             Conoce quiénes somos y cómo transformamos la seguridad laboral en una ventaja competitiva para tu empresa.
           </p>
           <div className="hero-buttons">
-            <button className="btn-primary" onClick={scrollToSection}>
+            <button className="btn-primary" onClick={scrollToQuienesSomos}>
               Conoce más <FontAwesomeIcon icon={faArrowRight} className="btn-icon" />
             </button>
-            <button className="btn-secondary">
+            <button className="btn-secondary" onClick={goToServices}>
               Ver servicios
             </button>
           </div>
         </div>
       </div>
 
-      {/* ===== CARDS PRINCIPALES CON IMÁGENES ALTERNAS ===== */}
+      {/* ===== CARDS PRINCIPALES ===== */}
       <div className="about-cards-section">
         <div className="section-header">
-          <span className="section-tag">✦ Nuestros pilares</span>
+          <span className="section-tag">
+            <FontAwesomeIcon icon={faStar} className="tag-icon" />
+            Nuestros pilares
+          </span>
           <h2>CONSTRUYENDO <span>SEGURIDAD</span></h2>
           <p className="section-subtitle">
             Tres principios fundamentales que guían nuestra misión y nos impulsan a transformar la seguridad laboral.
@@ -116,8 +147,9 @@ function AboutUs() {
         </div>
 
         <div className="about-grid">
-          {/* Card 1: Quiénes somos - Imagen a la IZQUIERDA (fondo azul oscuro) */}
+          {/* Card 1: Quiénes somos - CON ID */}
           <div 
+            id="quienes-somos"
             className="about-card card-left"
             ref={(el) => (cardsRef.current[0] = el)}
           >
@@ -133,30 +165,30 @@ function AboutUs() {
                 PREVIX SAS. es una empresa especializada en soluciones integrales de seguridad laboral, movilidad y gestión preventiva, enfocada en transformar la cultura organizacional mediante estrategias modernas y acompañamiento técnico especializado.
               </p>
               <div className="card-features">
-                <span>✓ Innovación</span>
-                <span>✓ Compromiso</span>
-                <span>✓ Excelencia</span>
+                <span><FontAwesomeIcon icon={faCheck} className="feature-icon" /> Innovación</span>
+                <span><FontAwesomeIcon icon={faCheck} className="feature-icon" /> Compromiso</span>
+                <span><FontAwesomeIcon icon={faCheck} className="feature-icon" /> Excelencia</span>
               </div>
             </div>
           </div>
 
-          {/* Card 2: Visión - Imagen a la DERECHA (fondo azul claro) */}
+          {/* Card 2: Enfoque - MÁS PEQUEÑA */}
           <div 
-            className="about-card card-right"
+            className="about-card card-right compact-card"
             ref={(el) => (cardsRef.current[1] = el)}
           >
-            <div className="about-card-content">
+            <div className="about-card-content compact-content">
               <h3>Nuestro <span>enfoque</span></h3>
-              <p>
+              <p className="compact-text">
                 Creemos que la prevención no debe verse como una obligación, sino como una herramienta estratégica para el crecimiento y sostenibilidad empresarial.
               </p>
               <div className="card-features">
-                <span>✓ Prevención</span>
-                <span>✓ Estrategia</span>
-                <span>✓ Sostenibilidad</span>
+                <span><FontAwesomeIcon icon={faCheck} className="feature-icon" /> Prevención</span>
+                <span><FontAwesomeIcon icon={faCheck} className="feature-icon" /> Estrategia</span>
+                <span><FontAwesomeIcon icon={faCheck} className="feature-icon" /> Sostenibilidad</span>
               </div>
             </div>
-            <div className="about-card-image image-light">
+            <div className="about-card-image image-light compact-image">
               <img src={visionImg} alt="Visión" />
               <div className="image-overlay">
                 <span>02</span>
@@ -164,26 +196,26 @@ function AboutUs() {
             </div>
           </div>
 
-          {/* Card 3: Compromiso - Imagen a la IZQUIERDA (fondo azul oscuro) */}
+          {/* Card 3: Compromiso - MÁS PEQUEÑA */}
           <div 
-            className="about-card card-left"
+            className="about-card card-left compact-card"
             ref={(el) => (cardsRef.current[2] = el)}
           >
-            <div className="about-card-image image-dark">
+            <div className="about-card-image image-dark compact-image">
               <img src={valoresImg} alt="Valores" />
               <div className="image-overlay">
                 <span>03</span>
               </div>
             </div>
-            <div className="about-card-content">
+            <div className="about-card-content compact-content">
               <h3>Nuestro <span>compromiso</span></h3>
-              <p>
+              <p className="compact-text">
                 Proteger vidas, fortalecer empresas y construir organizaciones más seguras.
               </p>
               <div className="card-features">
-                <span>✓ Protección</span>
-                <span>✓ Fortalecimiento</span>
-                <span>✓ Seguridad</span>
+                <span><FontAwesomeIcon icon={faCheck} className="feature-icon" /> Protección</span>
+                <span><FontAwesomeIcon icon={faCheck} className="feature-icon" /> Fortalecimiento</span>
+                <span><FontAwesomeIcon icon={faCheck} className="feature-icon" /> Seguridad</span>
               </div>
             </div>
           </div>
@@ -193,7 +225,10 @@ function AboutUs() {
       {/* ===== SECCIÓN DE VALORES ===== */}
       <div id="valores" className="valores-section">
         <div className="valores-header">
-          <span className="section-tag">✦ Nuestra esencia</span>
+          <span className="section-tag">
+            <FontAwesomeIcon icon={faStar} className="tag-icon" />
+            Nuestra esencia
+          </span>
           <h2>NUESTROS <span>VALORES</span></h2>
           <p className="section-subtitle">
             Cinco principios que nos definen y guían cada decisión que tomamos.
@@ -202,7 +237,7 @@ function AboutUs() {
 
         <div className="valores-grid">
           <div 
-            className="valor-item"
+            className="valor-item float-item"
             ref={(el) => (valuesRef.current[0] = el)}
           >
             <div className="valor-icon-wrapper">
@@ -213,7 +248,7 @@ function AboutUs() {
           </div>
 
           <div 
-            className="valor-item"
+            className="valor-item float-item"
             ref={(el) => (valuesRef.current[1] = el)}
           >
             <div className="valor-icon-wrapper">
@@ -224,7 +259,7 @@ function AboutUs() {
           </div>
 
           <div 
-            className="valor-item"
+            className="valor-item float-item"
             ref={(el) => (valuesRef.current[2] = el)}
           >
             <div className="valor-icon-wrapper">
@@ -235,7 +270,7 @@ function AboutUs() {
           </div>
 
           <div 
-            className="valor-item"
+            className="valor-item float-item"
             ref={(el) => (valuesRef.current[3] = el)}
           >
             <div className="valor-icon-wrapper">
@@ -246,7 +281,7 @@ function AboutUs() {
           </div>
 
           <div 
-            className="valor-item"
+            className="valor-item float-item"
             ref={(el) => (valuesRef.current[4] = el)}
           >
             <div className="valor-icon-wrapper">
@@ -259,12 +294,13 @@ function AboutUs() {
       </div>
 
       {/* ===== BANNER DE CIERRE ===== */}
-      <div className="about-cta">
+      <div id="contacto" className="about-cta">
         <div className="cta-content">
           <h3>¿Listo para transformar tu organización?</h3>
           <p>Descubre cómo PREVIX puede ayudarte a construir un entorno más seguro.</p>
           <button className="cta-button">
             Contáctanos ahora
+            <FontAwesomeIcon icon={faArrowRight} className="cta-icon" />
           </button>
         </div>
       </div>
