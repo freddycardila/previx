@@ -23,6 +23,7 @@ function Navbar() {
         <li><Link to="/">Inicio</Link></li>
         <li><Link to="/nosotros">Nosotros</Link></li>
         <li><Link to="/servicios">Servicios</Link></li>
+        <li><Link to="/advance">Avancemos</Link></li>
         <li><a href="#cursos">Cursos</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>

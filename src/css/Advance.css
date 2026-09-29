@@ -1,0 +1,699 @@
+/* ============================================
+   ADVANCE - VERSIÓN MEJORADA
+   ============================================ */
+
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.advance-section {
+  min-height: 100vh;
+  background-color: #0a1628;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+/* ===== HERO ===== */
+.advance-hero {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.advance-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(10, 22, 40, 0.98) 0%,
+    rgba(10, 22, 40, 0.85) 50%,
+    rgba(10, 22, 40, 0.4) 100%
+  );
+  z-index: 1;
+}
+
+/* ===== PARTÍCULAS DECORATIVAS ===== */
+.advance-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(74, 158, 255, 0.15);
+  animation: floatParticle 8s ease-in-out infinite;
+}
+
+.particle-1 {
+  width: 120px;
+  height: 120px;
+  top: 10%;
+  left: 5%;
+  animation-delay: 0s;
+}
+
+.particle-2 {
+  width: 80px;
+  height: 80px;
+  top: 60%;
+  left: 15%;
+  animation-delay: 2s;
+  background: rgba(27, 197, 189, 0.1);
+}
+
+.particle-3 {
+  width: 150px;
+  height: 150px;
+  bottom: 10%;
+  left: 30%;
+  animation-delay: 4s;
+  background: rgba(74, 158, 255, 0.08);
+}
+
+.particle-4 {
+  width: 60px;
+  height: 60px;
+  top: 30%;
+  right: 20%;
+  animation-delay: 6s;
+  background: rgba(27, 197, 189, 0.12);
+}
+
+@keyframes floatParticle {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate(30px, -30px) scale(1.2);
+    opacity: 0.7;
+  }
+}
+
+/* ===== CONTENIDO DEL HERO ===== */
+.advance-hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 6rem 3rem 4rem 3rem;
+  gap: 3rem;
+  align-items: center;
+}
+
+/* ===== COLUMNA IZQUIERDA ===== */
+.advance-text-column {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Badge decorativo */
+.advance-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.2rem;
+  background: rgba(74, 158, 255, 0.12);
+  border: 1px solid rgba(74, 158, 255, 0.3);
+  border-radius: 50px;
+  color: #4a9eff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  width: fit-content;
+  backdrop-filter: blur(10px);
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(74, 158, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(74, 158, 255, 0.25);
+  }
+}
+
+.advance-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1;
+  margin: 0 0 1rem 0;
+  color: #ffffff;
+  letter-spacing: -1px;
+}
+
+.advance-title span {
+  background: linear-gradient(135deg, #4a9eff, #1BC5BD);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.2);
+  }
+}
+
+.advance-subtitle {
+  font-size: 1.1rem;
+  color: #c8d0dc;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.advance-slogan {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #1BC5BD;
+  margin-bottom: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 0 20px rgba(27, 197, 189, 0.5);
+}
+
+/* ===== GRID DE CARACTERÍSTICAS ===== */
+.advance-features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 650px;
+  margin-bottom: 2rem;
+}
+
+.advance-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(74, 158, 255, 0.1);
+  border-radius: 12px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+  cursor: pointer;
+}
+
+.advance-feature-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.advance-feature-item:hover {
+  background: rgba(74, 158, 255, 0.08);
+  border-color: rgba(74, 158, 255, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(74, 158, 255, 0.15);
+}
+
+.advance-feature-icon {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, rgba(74, 158, 255, 0.15), rgba(27, 197, 189, 0.15));
+  border: 2px solid #4a9eff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #4a9eff;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.advance-feature-item:hover .advance-feature-icon {
+  background: linear-gradient(135deg, #4a9eff, #1BC5BD);
+  color: #ffffff;
+  transform: scale(1.1) rotate(-5deg);
+  box-shadow: 0 8px 20px rgba(74, 158, 255, 0.5);
+}
+
+.advance-feature-info h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0 0 4px 0;
+  color: #ffffff;
+}
+
+.advance-feature-info p {
+  font-size: 0.85rem;
+  color: #c8d0dc;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ===== BOTÓN CTA ===== */
+.advance-cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, #4a9eff, #1a6bc4);
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0 4px 20px rgba(74, 158, 255, 0.3);
+  width: fit-content;
+  position: relative;
+  overflow: hidden;
+}
+
+.advance-cta-button::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transform: rotate(45deg) translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.advance-cta-button:hover::before {
+  transform: rotate(45deg) translateX(100%);
+}
+
+.advance-cta-button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(74, 158, 255, 0.5);
+}
+
+.cta-icon {
+  transition: transform 0.3s ease;
+}
+
+.advance-cta-button:hover .cta-icon {
+  transform: translateX(6px);
+}
+
+/* ===== COLUMNA DERECHA ===== */
+.advance-visual-column {
+  width: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.advance-mockup-container {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Efecto glow detrás del mockup */
+.mockup-glow {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(circle, rgba(74, 158, 255, 0.3), transparent 70%);
+  filter: blur(60px);
+  z-index: 0;
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+.advance-mockup-laptop {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+  transition: transform 0.5s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.advance-mockup-laptop:hover {
+  transform: scale(1.03) translateY(-5px);
+}
+
+.advance-mockup-phone {
+  position: absolute;
+  right: -20px;
+  bottom: -40px;
+  width: 180px;
+  height: auto;
+  border-radius: 20px;
+  border: 4px solid #0d1b2a;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+  transition: transform 0.5s ease;
+  z-index: 2;
+}
+
+.advance-mockup-phone:hover {
+  transform: scale(1.05) translateY(-5px);
+}
+
+/* ===== SCROLL INDICATOR ===== */
+.advance-scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  animation: bounceDown 2s ease-in-out infinite;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(74, 158, 255, 0.8), transparent);
+}
+
+@keyframes bounceDown {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(8px);
+  }
+}
+
+/* ===== SECCIÓN ALIADOS ===== */
+.advance-allies-section {
+  background: linear-gradient(135deg, #0a1628 0%, #0d1b2a 100%);
+  border-top: 1px solid rgba(74, 158, 255, 0.15);
+  padding: 3rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.advance-allies-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(74, 158, 255, 0.05), transparent 70%);
+  animation: rotateGlow 20s linear infinite;
+}
+
+@keyframes rotateGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.advance-allies-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #4a9eff;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 1;
+}
+
+.advance-allies-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.advance-allie-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ffffff;
+  padding: 1rem 2rem;
+  background: rgba(74, 158, 255, 0.05);
+  border: 1px solid rgba(74, 158, 255, 0.15);
+  border-radius: 50px;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+.advance-allie-item:hover {
+  background: rgba(74, 158, 255, 0.12);
+  border-color: rgba(74, 158, 255, 0.4);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(74, 158, 255, 0.25);
+}
+
+.advance-allie-logo {
+  font-size: 1.8rem;
+  color: #1BC5BD;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.advance-allie-item:hover .advance-allie-logo {
+  transform: scale(1.15) rotate(-5deg);
+  color: #4a9eff;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+/* Tablets grandes */
+@media (max-width: 1100px) {
+  .advance-hero-content {
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem 2rem;
+    gap: 4rem;
+  }
+
+  .advance-text-column,
+  .advance-visual-column {
+    width: 100%;
+  }
+
+  .advance-text-column {
+    align-items: center;
+    text-align: center;
+  }
+
+  .advance-title {
+    font-size: 3rem;
+  }
+
+  .advance-badge,
+  .advance-cta-button {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .advance-visual-column {
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+  .advance-mockup-container {
+    max-width: 600px;
+  }
+
+  .advance-mockup-phone {
+    width: 160px;
+    right: -10px;
+    bottom: -30px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 992px) {
+  .advance-hero {
+    padding: 4rem 2rem;
+    min-height: auto;
+    background-attachment: scroll;
+  }
+
+  .advance-features-grid {
+    max-width: 100%;
+  }
+
+  .advance-particles {
+    display: none;
+  }
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+  .advance-hero {
+    background-attachment: scroll;
+    background-position: center top;
+  }
+
+  .advance-hero-content {
+    padding: 3rem 1.5rem;
+    gap: 3rem;
+  }
+
+  .advance-title {
+    font-size: 2.2rem;
+  }
+
+  .advance-subtitle {
+    font-size: 1rem;
+  }
+
+  .advance-slogan {
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+  }
+
+  .advance-features-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .advance-feature-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+
+  .advance-feature-info h3 {
+    font-size: 0.9rem;
+  }
+
+  .advance-feature-info p {
+    font-size: 0.8rem;
+  }
+
+  .advance-cta-button {
+    padding: 0.9rem 2rem;
+    font-size: 0.95rem;
+  }
+
+  .advance-mockup-container {
+    max-width: 500px;
+  }
+
+  .advance-mockup-phone {
+    width: 120px;
+    bottom: -15px;
+    right: 0;
+  }
+
+  .advance-allies-logos {
+    gap: 1.5rem;
+  }
+
+  .advance-allie-item {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .advance-allie-logo {
+    font-size: 1.4rem;
+  }
+
+  .advance-scroll-indicator {
+    display: none;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+  .advance-hero-content {
+    padding: 2rem 1rem;
+    gap: 2rem;
+  }
+
+  .advance-title {
+    font-size: 1.8rem;
+  }
+
+  .advance-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .advance-slogan {
+    font-size: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .advance-badge {
+    font-size: 0.7rem;
+    padding: 0.4rem 1rem;
+  }
+
+  .advance-feature-item {
+    gap: 0.8rem;
+    padding: 0.8rem;
+  }
+
+  .advance-feature-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 0.9rem;
+  }
+
+  .advance-feature-info h3 {
+    font-size: 0.85rem;
+  }
+
+  .advance-feature-info p {
+    font-size: 0.75rem;
+  }
+
+  .advance-mockup-container {
+    max-width: 100%;
+  }
+
+  .advance-mockup-phone {
+    width: 100px;
+    bottom: -10px;
+    right: 0;
+  }
+
+  .advance-allie-item {
+    font-size: 0.85rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  .advance-allie-logo {
+    font-size: 1.2rem;
+  }
+}
