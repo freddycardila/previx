@@ -8,6 +8,7 @@ import Contact from "./pages/Contact";
 import Courses from "./pages/Courses";
 import Advance from "./pages/Advance";
 import CookieBanner from './components/CookieBanner';
+import WhatsAppButton from './components/WhatsAppButton';
 
 function App() {
   return (
@@ -22,6 +23,14 @@ function App() {
         <Route path="/contacto" element={<Contact />} />
       </Routes>
       <Footer />
+      <WhatsAppButton
+        phoneNumber="573001234567"
+        message="Hola, me gustaría recibir más información sobre los servicios de PREVIX."
+        botName="Equipo PREVIX"
+        botMessage="¡Hola! 👋 ¿En qué podemos ayudarte hoy?"
+        showAfter={3000}
+        position="bottom-right"
+      />
       <CookieBanner />
     </>
   );
