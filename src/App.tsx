@@ -24,7 +24,7 @@ function App() {
       </Routes>
       <Footer />
       <WhatsAppButton
-        phoneNumber="573001234567"
+        phoneNumber="573027521827"
         message="Hola, me gustaría recibir más información sobre los servicios de PREVIX."
         botName="Equipo PREVIX"
         botMessage="¡Hola! 👋 ¿En qué podemos ayudarte hoy?"
